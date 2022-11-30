@@ -54,3 +54,21 @@ for(i = 1;i<T.Length;i++)
 }
 Console.WriteLine(min)
 */
+int n = 10;
+int pocz = 1;
+int kon = 20;
+
+int []T = new int[n];
+Random r = new Random();
+/*
+for (int i=0;i<n;i++)
+{
+  T[i] = r.Next(pocz,kon);
+}
+for (int i=0;i<n;i++)
+{
+  Console.WriteLine(T[i]+" ");
+}
+*/
+
+
