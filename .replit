@@ -1,5 +1,5 @@
 run = "dotnet run"
-entrypoint = "tabliceIpetle.cs"
+entrypoint = "main.cs"
 
 hidden = ["bin", "obj"]
 
