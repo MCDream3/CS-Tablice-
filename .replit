@@ -1,5 +1,5 @@
 run = "dotnet run"
-entrypoint = "main.cs"
+entrypoint = "KartaPracy6A.cs"
 
 hidden = ["bin", "obj"]
 
