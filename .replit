@@ -1,5 +1,5 @@
 run = "dotnet run"
-entrypoint = "KartaPracy6A.cs"
+entrypoint = "PowtorkaDoSprawdzianu_nr2.cs"
 
 hidden = ["bin", "obj"]
 
@@ -17,10 +17,10 @@ packageSearch = true
 requiredFiles = [".replit", "replit.nix"]
 
 [nix]
-channel = "stable-21_11"
+channel = "stable-22_11"
 
 [languages.csharp]
 pattern = "**/*.cs"
 
   [languages.csharp.languageServer]
-  start = ["omnisharp", "--languageserver"]
+  start = ["OmniSharp", "--languageserver"]
