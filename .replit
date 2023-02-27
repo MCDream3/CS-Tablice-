@@ -1,5 +1,5 @@
 run = "dotnet run"
-entrypoint = "PowtorkaDoSprawdzianu_nr2.cs"
+entrypoint = "main.cs"
 
 hidden = ["bin", "obj"]
 
