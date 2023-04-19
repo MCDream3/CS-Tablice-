@@ -11,7 +11,7 @@
 //    return max;
 //}
 
-//void Sel_sort(int n)
+//void SelectionSort(int n)
 //{
 //    for (int i = n; i >= 2; i--)
 //    {
