@@ -136,22 +136,22 @@ static void CountingSort(int[] Array)
         }
     }
 
-int[] frequence = new int[max + 1];
+int[] f = new int[max + 1];
 for (int i = 0; i < max + 1; i++)
 {
-    frequence[i] = 0;
+    f[i] = 0;
 }
 for (int i = 0; i < n; i++)
 {
-    frequence[Array[i]]++;
+    f[Array[i]]++;
 }
 for (int i = 0, j = 0; i <= max; i++)
 {
-    while (frequence[i] > 0)
+    while (f[i] > 0)
     {
         Array[j] = i;
         j++;
-        frequence[i]--;
+        f[i]--;
     }
 }
 }
@@ -163,6 +163,33 @@ static void PrintArray(int[] Array)
     Console.Write("\n");
 }
 
+//~TP_POpr method~
+
+int[] L = new int[20];
+
+for (int i = 0; i < n; i++)
+{
+    L[T[i]]++;
+}
+
+for (int i = 0; i < L.Length; i++)
+{
+    Console.Write(L[i] + " ");
+}
+
+int q = 0;
+for (int i = 0; i < L.Length; i++)
+{
+    if (L[i] > 0)
+    {
+        for (int s = 0; s < L[i]; s++)
+        {
+            T[q] = i;
+            q++;
+        }
+    }
+}
+
 //5. Sortowanie kubełkowe               <-- bucket sort -->
 //~Casual~
 
@@ -172,25 +199,25 @@ class BucketSort
     {
         List<int> sortedArray = new List<int>();
         int numOfBuckets = 10;
-        List<int>[] buckets = new List<int>[numOfBuckets];
+        List<int>[] b = new List<int>[numOfBuckets];
         for (int i = 0; i < numOfBuckets; i++)
         {
-            buckets[i] = new List<int>();
+            b[i] = new List<int>();
         }
         for (int i = 0; i < x.Length; i++)
         {
             int bucket = (x[i] / numOfBuckets);
-            buckets[bucket].Add(x[i]);
+            b[bucket].Add(x[i]);
         }
         for (int i = 0; i < numOfBuckets; i++)
         {
-            List<int> temp = InsertionSort(buckets[i]);
+            List<int> temp = InsSort(b[i]);
             sortedArray.AddRange(temp);
         }
         return sortedArray;
     }
 //Wstawienie Insertion Sort
-public static List<int> InsertionSort(List<int> input)
+public static List<int> InsSort(List<int> input)
 {
     for (int i = 1; i < input.Count; i++)
     {
@@ -210,7 +237,65 @@ public static List<int> InsertionSort(List<int> input)
 }
 }
 
+//~TP_POpr method~
+
+
+
 //6. Sortowanie przez scalanie          <-- merge sort -->
+//~TP_POpr method~
+void scalaj(int lewy, int prawy)
+{
+    int[] pom = new int[n];
+    for (int a = 0; a < n; a++) pom[a] = T[a];
+    int i, i_lewy, i_prawy;
+    int srodek = (lewy + prawy) / 2;
+    i = lewy;
+    i_lewy = lewy;
+    i_prawy = srodek;
+
+    while(i_lewy <= srodek && i_prawy <= prawy) 
+    {
+        if (pom[i_lewy] < pom[i_prawy])
+        {
+            T[i] = pom[i_lewy];
+            i_lewy++;
+        }
+        else
+        {
+            T[i] = pom[i_prawy];
+            i_prawy++;
+        }
+        i++;
+    }
+    if (i_lewy > srodek)
+    {
+        while(i_prawy <= prawy)
+        {
+            T[i] = pom[i_prawy];
+            i_prawy++;
+            i++;
+        }
+    }
+else
+    {
+        while (i_lewy <= srodek)
+        {
+            T[i] = pom[i_lewy];
+            i_lewy++;
+            i++;
+        }
+}
+
+//ta częśc jeszcze jest niedokończona
+void sortuj(int lewy, int prawy)
+{
+    int srodek = (lewy + prawy) / 2;
+    if (lewy < srodek)
+    {
+        sortuj(lewy, srodek);
+       if (srodek + 1 < prawy)
+    }
+}
 
 
 //<-- Sortowania szybkie -->
