@@ -142,16 +142,21 @@ else
         }
 }
 
-//ta częśc jeszcze jest niedokończona
 void sortuj(int lewy, int prawy)
 {
     int srodek = (lewy + prawy) / 2;
     if (lewy < srodek)
     {
         sortuj(lewy, srodek);
-       if (srodek + 1 < prawy)
     }
+    if (srodek + 1 < prawy)
+    {
+        sortuj(srodek + 1, prawy);
+    }
+    scalaj(lewy, prawy);
 }
+
+sortuj(0, n-1);
 
 
 //<-- Sortowania szybkie -->
