@@ -43,3 +43,64 @@ public static List<int> InsertionSort(List<int> input)
     return input;
 }
 }
+
+
+//kolejny sposób ALE dużo nie działa
+
+static int[] BucketSort(int lista, dynamic listInput)
+{
+    for (int i = 0; i < listInput.Count; i++)
+    {
+        for (int j = 0; j < listInput.Count; j++)
+        {
+            if (listInput[i] < listInput[j])
+            {
+                var TeMp = listInput[i];
+                listInput[i] = listInput[j];
+                listInput[j] = TeMp;
+            }
+        }
+    }
+    return listInput.ToArray();
+}
+int[] sortuj(int[] array)
+{
+    int sortedList = new int();
+    var minWartosc = array[0];
+    var maxWartosc = array[0];
+
+    if (array == null || array.Length <= 1)
+    {
+        return array;
+    }
+
+    for (int i = 1; i < array.Length; i++)
+    {
+        if (array[i] > maxWartosc)
+            maxWartosc = array[i];
+        if (array[i] < minWartosc)
+            minWartosc = array[i];
+    }
+    
+    var numberOfBuckets = maxWartosc - minWartosc + 1;
+    int[] wiaderko = new int[numberOfBuckets];
+
+    for (int i = 0; i < numberOfBuckets; i++) 
+    {
+        wiaderko[i] = new int();
+    }
+       
+    for (int i = 0; i < array.Length; i++)
+    {
+        var wybrany = (array[i] / numberOfBuckets);
+        wiaderko[wybrany].Add(array[i]);
+    }
+
+    for (int i = 0; i < numberOfBuckets; i++)
+    {
+        int[] temp = BucketSort(wiaderko[i]);
+        sortedList.AddRange(temp);
+    }
+
+    return sortedList.ToArray;
+}
