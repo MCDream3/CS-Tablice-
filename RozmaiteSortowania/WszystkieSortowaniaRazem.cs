@@ -163,9 +163,59 @@ sortuj(0, n-1);
 
 //7. Sortowanie Quicksort Hoare
 
+void Hoare(int lewy, int prawy)
+{
+    int i = lewy;
+    int j = prawy;
+    int temp;
+    int pivot = T[(lewy + prawy) / 2];
+
+    while (i <= j)
+    {
+        while (T[i] < pivot) i++;
+        while (T[j] > pivot) j--;
+        if (i <= j)
+        {
+            temp = T[i];
+            T[i] = T[j];
+            T[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    if (lewy < j) Hoare(lewy, j);
+    if (prawy > i) Hoare(i, prawy);
+}
+
+Hoare(0, n - 1);
+    
 //8. Sortowanie Quicksort Lomuto
 
+void Lomuto(int lewy, int prawy)
+{
+    int pivot = T[prawy];
+    int i = lewy;
+    int Temp;
+    for (int k = lewy; k < prawy; k++)
+    {
+        if (T[k] <= pivot)
+        {
+            Temp = T[i];
+            T[i] = T[k];
+            T[k] = Temp;
+            i++;
+        }
+    }
+    Temp = T[i];
+    T[i] = T[prawy];
+    T[prawy] = Temp;
 
+    if (lewy < i - 1) Lomuto(lewy, i - 1);
+    if (prawy > i + 1) Lomuto(i + 1, prawy);
+}
+
+Lomuto(0, n - 1);
+    
 //wyświetlanie posortowanej tablicy
 
 for (int i = 0; i < 20; i++)
