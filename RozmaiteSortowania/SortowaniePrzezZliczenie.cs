@@ -1,40 +1,24 @@
-//~Casual~    "ChYbA DzIaŁa"    to tylko początek i być może moja nie działająca wersja...      *bro I just had to try ok?*
+int[] L = new int[20];
 
-static void CountingSort(int[] Array)
-{
-    int n = Array.Length;
-    int max = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (max < Array[i])
-        {
-            max = Array[i];
-        }
-    }
-
-int[] frequence = new int[max + 1];
-for (int i = 0; i < max + 1; i++)
-{
-    frequence[i] = 0;
-}
 for (int i = 0; i < n; i++)
 {
-    frequence[Array[i]]++;
+    L[T[i]]++;
 }
-for (int i = 0, j = 0; i <= max; i++)
+
+for (int i = 0; i < L.Length; i++)
 {
-    while (frequence[i] > 0)
+    Console.Write(L[i] + " ");
+}
+
+int q = 0;
+for (int i = 0; i < L.Length; i++)
+{
+    if (L[i] > 0)
     {
-        Array[j] = i;
-        j++;
-        frequence[i]--;
+        for (int s = 0; s < L[i]; s++)
+        {
+            T[q] = i;
+            q++;
+        }
     }
-}
-}
-static void PrintArray(int[] Array)
-{
-    int n = Array.Length;
-    for (int i = 0; i < n; i++)
-        Console.Write(Array[i] + " ");
-    Console.Write("\n");
 }
