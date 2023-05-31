@@ -157,11 +157,58 @@ void sortuj(int lewy, int prawy)
 }
 
 sortuj(0, n-1);
+    
+//Sortowanie grzebieniowe           <-- comb sort -->
 
+using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] array = { 7, 2, 8, 5, 1, 4, 9, 3, 6 };
+        Console.WriteLine("Nieposortowana tablica:");
+        WypiszListe(array);
+        CombSort(array);
+        Console.WriteLine("Posortowana tablica:");
+        WypiszListe(array);
+    }
+
+    static void CombSort(int[] array)
+    {
+        int n = array.Length;
+        int gap = n;
+        bool swapped = true;
+        while (gap > 1 || swapped)
+        {
+            gap = Math.Max((gap * 10) / 13, 1);
+            swapped = false;
+            for (int i = 0; i < n - gap; i++)
+            {
+                if (array[i] > array[i + gap])
+                {
+                    Swap(ref array[i], ref array[i + gap]);
+                    swapped = true;
+                }
+            }
+        }
+    }
+
+    static void Swap(ref int a, ref int b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    static void WypiszListe(int[] array)
+    {
+        Console.WriteLine(string.Join(" ", array));
+    }
+}
 
 //<-- Sortowania szybkie -->
 
-//7. Sortowanie Quicksort Hoare
+//8. Sortowanie Quicksort Hoare
 
 void Hoare(int lewy, int prawy)
 {
@@ -189,7 +236,7 @@ void Hoare(int lewy, int prawy)
 
 Hoare(0, n - 1);
     
-//8. Sortowanie Quicksort Lomuto
+//9. Sortowanie Quicksort Lomuto
 
 void Lomuto(int lewy, int prawy)
 {
